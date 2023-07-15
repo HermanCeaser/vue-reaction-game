@@ -25,13 +25,35 @@ function endGame(reactionTime){
 <template>
   <main>
     <h1>Reaction Timer Game.</h1>
-    <button @click="startGame" type="button" :disabled="isPlaying">Play</button>
+    <button class="btn" @click="startGame" type="button" :disabled="isPlaying">Play</button>
 
     <Block @end-game="endGame" v-if="isPlaying" :delay="delay" />
-    <Result v-show="showResults" :results="score"/>
+    <Result v-if="showResults" :results="score"/>
   </main>
 </template>
 
 <style scoped>
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+  .btn {
+    padding: 10px 0;
+    border-radius: 50px;
+    border: none;
+    background-color: #11ae54;
+    color: white;
+    /* font-size: 1.2em; */
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
 
+  .btn:hover {
+    background-color: #00ff6e;
+  }
+
+  .btn:disabled:hover {
+    cursor: not-allowed;
+    background-color: #11ae54;
+  }
 </style>
